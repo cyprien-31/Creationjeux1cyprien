@@ -14,51 +14,78 @@ using namespace std;
 #include <array>
 
 int main() {
-int score(0);
-int i(0);
-int quille_Tomber(0);
-int Points_quilles(0);
+    int score1(0);
+    int quille_Tomber(0);
+    int Points_quilles(0);
+    int score2(0);
+    int equipe = 1;
 
+    while (score1 < 50 && score2 < 50) {
 
-while(score < 50) {
-    cout << "combien de quille sont tomber (max 12): " << endl;
-    cin >> quille_Tomber;
-    if (quille_Tomber > 12) {
-        cout << "Le nombres de quilles tombees ne peut pas depasser 12. Veuillez entrer une valeur valide . " << endl;
-      continue;
+        cout << "equipe " << equipe << " combien de quille sont tomber (max 12): " << endl;
+        cin >> quille_Tomber;
 
-    }
+        if (quille_Tomber > 12) {
+            cout << "Le nombres de quilles tombees ne peut pas depasser 12. Veuillez entrer une valeur valide . "
+                 << endl;
+            continue;
 
+        }
 
 
         if (quille_Tomber >= 2) {
+            if (equipe == 1) {
 
-        score = score + quille_Tomber;
-    }
-        if(Points_quilles > 12){
-            cout << "Le nombre de points entrer ne peut pas depasser 12. Veuillez entrer une valeur valide . " << endl;
+                score1 = score1 + quille_Tomber;
+            } else {
+                score2 = score2 + quille_Tomber;
+            }
+
+
+        } else if (quille_Tomber == 1) {
+            do {
+                cout << "numero de la quille tomber (max 12) : " << endl;
+                cin >> Points_quilles;
+
+                if (Points_quilles > 12) {
+                    cout
+                            << "Les points associe a une quille ne peuvent pas depasser 12. Veuillez entrer une valeur valide. "
+                            << endl;
+
+                }
+            } while (Points_quilles > 12);
+
+            if (equipe == 1) {
+                score1 = score1 + Points_quilles;
+            } else {
+                score2 = score2 + Points_quilles;
+            }
         }
 
-        if (quille_Tomber == 1){
-        cout << "point associes  a la quille : " << endl;
-        cin >> Points_quilles;
-        score = score + Points_quilles;
+
+        cout << "score actuel equipe 1 : " << score1 << endl;
+        cout << "score actuel equipe 2 : " << score2 << endl;
+
+        if (score1 == 50) {
+            cout << "bravo l'equipe 1 vous avez gagnez la partie  " << endl;
+            break;
+
+
+        } else if (score2 == 50) {
+            cout << "bravo l'equipe 2 vous avez gagnez la partie " << endl;
+            break;
+
+        } else if (score1 > 50) {
+            score1 = 25;
+            cout << "score de l'equipe 1 reinitialiser a 25 : " << endl;
+
+        } else if (score2 > 50) {
+            score2 = 25;
+            cout << "score de l'equipe 2 reinitialiser a 25 : " << endl;
+        }
+        equipe = (equipe == 1) ? 2 : 1;
     }
-    cout << "score actuel : " << score << endl;
-    if(score == 50) {
-        cout << "bravo vous avez gagnez la partie  " << endl;
-    }
-
-    i++;
-
-    if(score > 50){
-        score = 25;
-        cout << "score reinitialiser a 25 : " << endl;
-    }
-
-
-}
-
 
     return 0;
-}
+
+    }
