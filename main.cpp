@@ -19,8 +19,9 @@ int main() {
     int Points_quilles(0);
     int score2(0);
     int equipe = 1;
+    int score3(0);
 
-    while (score1 < 50 && score2 < 50) {
+    while (score1 < 50 && score2 < 50 && score3 < 50) {
 
         cout << "equipe " << equipe << " combien de quille sont tomber (max 12): " << endl;
         cin >> quille_Tomber;
@@ -37,10 +38,12 @@ int main() {
             if (equipe == 1) {
 
                 score1 = score1 + quille_Tomber;
-            } else {
+            } else if (equipe == 2) {
                 score2 = score2 + quille_Tomber;
-            }
 
+            } else {
+                score3 = score3 + quille_Tomber;
+            }
 
         } else if (quille_Tomber == 1) {
             do {
@@ -57,35 +60,45 @@ int main() {
 
             if (equipe == 1) {
                 score1 = score1 + Points_quilles;
-            } else {
+            } else if (equipe == 2) {
                 score2 = score2 + Points_quilles;
+            } else {
+                score3 = score3 + Points_quilles;
             }
         }
 
 
-        cout << "score actuel equipe 1 : " << score1 << endl;
-        cout << "score actuel equipe 2 : " << score2 << endl;
+            cout << "score actuel equipe 1 : " << score1 << endl;
+            cout << "score actuel equipe 2 : " << score2 << endl;
+            cout << "score actuel equipe 3 : " << score3 << endl;
 
-        if (score1 == 50) {
-            cout << "bravo l'equipe 1 vous avez gagnez la partie  " << endl;
-            break;
+            if (score1 == 50) {
+                cout << "bravo l'equipe 1 vous avez gagnez la partie  " << endl;
+                break;
 
 
-        } else if (score2 == 50) {
-            cout << "bravo l'equipe 2 vous avez gagnez la partie " << endl;
-            break;
+            } else if (score2 == 50) {
+                cout << "bravo l'equipe 2 vous avez gagnez la partie " << endl;
+                break;
 
-        } else if (score1 > 50) {
-            score1 = 25;
-            cout << "score de l'equipe 1 reinitialiser a 25 : " << endl;
+            } else if (score3 == 50) {
+                cout << "bravo l'equipe 3 vous avez gagnez la partie " << endl;
 
-        } else if (score2 > 50) {
-            score2 = 25;
-            cout << "score de l'equipe 2 reinitialiser a 25 : " << endl;
+
+            } else if (score1 > 50) {
+                score1 = 25;
+                cout << "score de l'equipe 1 reinitialiser a 25 : " << endl;
+
+            } else if (score2 > 50) {
+                score2 = 25;
+                cout << "score de l'equipe 2 reinitialiser a 25 : " << endl;
+            } else if (score3 > 50) {
+                score3 = 25;
+                cout << "score de l'equipe 3 reinitialiser a 25 : " << endl;
+            }
+            equipe = (equipe == 1) ? 2 : (equipe == 2) ? 3 : 1;
         }
-        equipe = (equipe == 1) ? 2 : 1;
-    }
-
-    return 0;
+        return 0;
 
     }
+
