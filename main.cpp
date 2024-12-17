@@ -16,25 +16,46 @@ using namespace std;
 int main() {
 int score(0);
 int i(0);
-int compteur(0);
 int quille_Tomber(0);
 int Points_quilles(0);
 
 
-while(i < 50) {
-    cout << "combien de quille sont tomber : " << endl;
+while(score < 50) {
+    cout << "combien de quille sont tomber (max 12): " << endl;
     cin >> quille_Tomber;
-    if (quille_Tomber >= 2) {
+    if (quille_Tomber > 12) {
+        cout << "Le nombres de quilles tombees ne peut pas depasser 12. Veuillez entrer une valeur valide . " << endl;
+      continue;
+
+    }
+
+
+
+        if (quille_Tomber >= 2) {
 
         score = score + quille_Tomber;
     }
+        if(Points_quilles > 12){
+            cout << "Le nombre de points entrer ne peut pas depasser 12. Veuillez entrer une valeur valide . " << endl;
+        }
 
-    if (quille_Tomber == 1){
-        cout << "point associés  a la quille : " << endl;
+        if (quille_Tomber == 1){
+        cout << "point associes  a la quille : " << endl;
         cin >> Points_quilles;
         score = score + Points_quilles;
     }
-    cout << score << endl;
+    cout << "score actuel : " << score << endl;
+    if(score == 50) {
+        cout << "bravo vous avez gagnez la partie  " << endl;
+    }
+
+    i++;
+
+    if(score > 50){
+        score = 25;
+        cout << "score reinitialiser a 25 : " << endl;
+    }
+
 
 }
 
